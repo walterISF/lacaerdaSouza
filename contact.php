@@ -2,9 +2,9 @@
 
 if(isset($_POST['email'])) {
 
-    $email_to = "joash.pereira@gmail.com";
+    $email_to = "engenharia@lacerdasouza.com.br";
  
-    $email_subject = "Website Contact";
+    $email_subject = "Contato Site";
 
  
     function died($error) {
@@ -41,7 +41,7 @@ if(isset($_POST['email'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $message = $_POST['message'];
- 
+  
  
     $email_message = "Form details below.\n\n";
  
@@ -64,15 +64,29 @@ if(isset($_POST['email'])) {
     $email_message .= "Message: ".clean_string($message)."\n";
 
  
-	// create email headers
-	 
-	$headers = 'From: '.$email."\r\n".
-	 
-	'Reply-To: '.$email."\r\n" .
-	 
-	'X-Mailer: PHP/' . phpversion();
-	 
-	@mail($email_to, $email_subject, $email_message, $headers);  
+  // create email headers
+   
+  $headers = 'From: '.$email_to."\r\n".
+   
+  'Reply-To: '.$email_to."\r\n" .
+   
+  'X-Mailer: PHP/' . phpversion();
+   
+      /* Verifica qual é o sistema operacional do servidor para ajustar o cabeçalho de forma correta. Não alterar */
+     if(PHP_OS == "Linux") $quebra_linha = "\n"; //Se for Linux
+     elseif(PHP_OS == "WINNT") $quebra_linha = "\r\n"; // Se for Windows
+     else die("Este script não está preparado para funcionar com o sistema operacional de seu servidor");
+     /* Montando o cabeçalho da mensagem */
+     $headers = "MIME-Version: 1.1".$quebra_linha.
+     "Content-type: text/html; charset=iso-8859-1".$quebra_linha .
+     "From: ".$email_to.$quebra_linha.
+     "Reply-To: ".$email_to.$quebra_linha;
+     // Note que o e-mail do remetente será usado no campo Reply-To (Responder Para)
+     echo'aqui fora';
+     /* Enviando a mensagem */
+     mail($email_to, $email_subject, $email_message, $headers);
+     $str_msg = 'Sua mensagem foi enviada com sucesso!';
+     echo $str_msg;
 
 
 ?>
@@ -83,7 +97,7 @@ if(isset($_POST['email'])) {
  
  
  
-Thank you for contacting me. Will be in touch with you very soon.
+Email enviado com sucesso.
  
  
  
