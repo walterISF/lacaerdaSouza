@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#2196F3">
+    <title>Lacerda Souza</title>
+
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.css">
+<style type="text/css">
+
+</style>
+</head>
+<body>
+
+<!-- Flickity HTML init -->
+<div class="carousel">
+  <div class="carousel-cell"><img src="img/teste.jpg"/></div>
+  <div class="carousel-cell"><img src="img/teste.jpg"/></div>
+  <div class="carousel-cell"><img src="img/teste.jpg"/></div>
+  <div class="carousel-cell"><img src="img/teste.jpg"/></div>
+  <div class="carousel-cell"><img src="img/teste.jpg"/></div>
+</div>
+
+<button class="button">NOVO</button>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--  Scripts-->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js"></script>
+  
+    <script type="text/javascript"> 
+		$('.carousel').flickity({
+		  // options
+		  contain: true
+		});
+		$(document).ready(function(){
+			var $carousel = $('.carousel');
+			$carousel.flickity('playPlayer');
+			$('.button').on( 'click', function() {
+			  var $cellElems = $('<div class="carousel-cell"><img src="img/teste.jpg"/></div>');
+			  $carousel.flickity( 'append', $cellElems );
+			});			
+		});
+
+    </script>
+    </body>
+</html>
