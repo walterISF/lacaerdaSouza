@@ -2,8 +2,8 @@ var app = angular.module("app", ["ngRoute"]);
 
 app.config(["$routeProvider", function($routeProvider){
 	$routeProvider.
-	when("/",{templateUrl: "producao.html",controller: "myController"}).
-	when("/prod",{templateUrl: "manutencao.html",controller: "myController"}).
+	when("/",{templateUrl: "manutencao.html",controller: "myController"}).
+	when("/prod",{templateUrl: "producao.html",controller: "myController"}).
 	otherwise({redirectTo: "/"});
     
 }]);
@@ -27,7 +27,18 @@ app.controller("myController", function($scope, $http, $location){
 		});
 		$(".scroll").click(function(event){        
         	event.preventDefault();
-        	$('html,body').animate({scrollTop:$(this.hash).offset().top - 50}, 800);
-   		});
+        	$('html,body').animate({scrollTop:$(this.hash).offset().top - 50}, 800);   		
+		});
+
+		$(window).scroll(function() {
+		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+		   		$(".circulo").css("display","none");
+		   }
+		   else
+		   {
+		   		$(".circulo").css("display","block");
+		   }
+		});
+  		
 	});
 });
