@@ -337,4 +337,8 @@ footer.page-footer {
     padding: 10px;
     border-radius: 13px;
     font-size: 10px;
+
+}
+.flickity-page-dots{
+    bottom: inherit;
 }
