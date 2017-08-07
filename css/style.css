@@ -28,7 +28,7 @@
 
 .text_h {
     padding: 15% 0;
-    font-size: 7em;
+    font-size: 6em;
     font-weight: 300;
     color: white;
 }
@@ -113,7 +113,6 @@ nav ul a {
 .cd-headline{
     position: absolute;
     z-index: 9;
-    left: 30vh;
 }
 
 .cd-headline.type .cd-words-wrapper.selected b {
@@ -220,9 +219,24 @@ nav ul a {
 @media only screen and (max-width: 480px) {
     .text_h {
         padding: 4% 0;
-        font-size: 5em;
+        font-size: 3em;
         font-weight: 100;
         color: white
+    }
+    .cd-headline{
+        left: 0;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .text_h {
+        padding: 4% 0;
+        font-size: 3em;
+        font-weight: 100;
+        color: white
+    }
+    .cd-headline{
+        left: 0;
     }
 }
 
@@ -279,12 +293,6 @@ nav a.button-collapse {
 footer.page-footer {
     margin-top: 0px !important
 }
-
-@media only screen and (min-width: 993px){
-.container {
-    width: 80%;
-}
-}
 #btnContato{
     background-color: brown !important;
 }
@@ -319,4 +327,21 @@ footer.page-footer {
 }
 .flickity-page-dots{
     bottom: inherit;
+}
+
+#sidenav-overlay {
+    background-color: transparent;
+}
+
+@media only screen and (max-width: 1024px)
+{
+    nav a.button-collapse {
+        display: block;
+    }
+    .hide-on-med-and-down {
+        display: none !important;
+    }
+    .container{
+        width: 90%;
+    }
 }
