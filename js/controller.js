@@ -16,7 +16,7 @@ app.controller("myController", function($scope, $http, $location){
 
 	$(".scroll").click(function(event){        
     	event.preventDefault();
-    	$('html,body').animate({scrollTop:$(this.hash).offset().top - 50}, 800);   		
+      $('html,body').animate({scrollTop:$(this.hash).offset().top - 50}, 800);	
 	});
 
 	$(window).scroll(function() {

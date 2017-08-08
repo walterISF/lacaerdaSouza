@@ -293,9 +293,6 @@ nav a.button-collapse {
 footer.page-footer {
     margin-top: 0px !important
 }
-#btnContato{
-    background-color: brown !important;
-}
 .flag
 {
     height: 40px;
@@ -332,7 +329,14 @@ footer.page-footer {
 #sidenav-overlay {
     background-color: transparent;
 }
-
+#nav-mobile li:hover
+{
+    background-color: rgba(0, 0, 0, 0.42);
+}
+#sidenav-overlay
+{
+    z-index: 99;
+}
 @media only screen and (max-width: 1024px)
 {
     nav a.button-collapse {
