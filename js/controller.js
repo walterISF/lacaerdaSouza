@@ -48,7 +48,7 @@ function carregarCaroucel(item)
 /*################################################################################*/
 var token = '5536912247.3a6b548.2609b93a94dc4e6fbfb3072f2c0d2f9e', // learn how to obtain it below
     userid = 5536912247, // User ID - get it in source HTML of your Instagram profile or look at the next example :)
-    num_photos = 5; // how much photos do you want to get
+    num_photos = 10; // how much photos do you want to get
  
 $.ajax({
   url: 'https://api.instagram.com/v1/users/' + userid + '/media/recent', // or /users/self/media/recent for Sandbox
@@ -58,7 +58,7 @@ $.ajax({
   success: function(data){
 
     for( x in data.data ){
-      console.log(data);
+      //console.log(data);
       //var $cellElems = $('<div class="carousel-cell"><img data-flickity-lazyload="'+data.data[x].images.low_resolution.url+'"></div>');
       var $cellElems = $('<div class="carousel-cell"><img src="'+data.data[x].images.low_resolution.url+'"/></div>');
       item.flickity( 'append', $cellElems );
