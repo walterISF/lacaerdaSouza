@@ -82,27 +82,10 @@ if(isset($_POST['email'])) {
      "From: ".$email_to.$quebra_linha.
      "Reply-To: ".$email_to.$quebra_linha;
      // Note que o e-mail do remetente será usado no campo Reply-To (Responder Para)
-     echo'aqui fora';
+
      /* Enviando a mensagem */
      mail($email_to, $email_subject, $email_message, $headers);
      $str_msg = 'Sua mensagem foi enviada com sucesso!';
      echo $str_msg;
-
-
-?>
- 
- 
- 
-<!-- include your own success html here -->
- 
- 
- 
-Email enviado com sucesso.
- 
- 
- 
-<?php
- 
-}
- 
+ }
 ?>

@@ -37,6 +37,35 @@ $(document).ready(function(){
 
 	// Initialize collapse button
 	$(".button-collapse").sideNav();
+
+	$("#btnContato").click(function(){
+
+		if( $("#nome").val() != "" && $("#icon_email").val() != "" && $("#mensagem").val() != "")
+		{
+
+			$.ajax({
+			  url: 'contact.php', // or /users/self/media/recent for Sandbox
+			  dataType: 'text',
+			  type: 'POST',
+			  data: {
+				name: $("#nome").val(),
+				email: $("#icon_email").val(),
+				message: $("#mensagem").val()
+
+			  },
+			  success: function(data){
+			  	console.log(data);
+			  },
+			  error: function(data){
+			    console.log(data); // send the error notifications to console
+			  }
+			});	
+		}
+		else
+		{
+			alert("Preencha todos os campos");
+		}
+	});
 		
 });
 
