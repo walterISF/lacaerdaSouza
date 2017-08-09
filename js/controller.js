@@ -2,8 +2,8 @@ var app = angular.module("app", ["ngRoute"]);
 
 app.config(["$routeProvider", function($routeProvider){
 	$routeProvider.
-	when("/",{templateUrl: "manutencao.html",controller: "myController"}).
-	when("/prod",{templateUrl: "producao.html",controller: "myController"}).
+	when("/man",{templateUrl: "manutencao.html",controller: "myController"}).
+	when("/",{templateUrl: "producao.html",controller: "myController"}).
 	otherwise({redirectTo: "/"});
     
 }]);
