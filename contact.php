@@ -63,45 +63,30 @@ if(isset($_POST['email'])) {
  
     $email_message .= "Message: ".clean_string($message)."\n";
 
- 
-  // create email headers
-   
-  $headers = 'From: '.$email_to."\r\n".
-   
-  'Reply-To: '.$email_to."\r\n" .
-   
-  'X-Mailer: PHP/' . phpversion();
-   
-      /* Verifica qual é o sistema operacional do servidor para ajustar o cabeçalho de forma correta. Não alterar */
-     if(PHP_OS == "Linux") $quebra_linha = "\n"; //Se for Linux
-     elseif(PHP_OS == "WINNT") $quebra_linha = "\r\n"; // Se for Windows
-     else die("Este script não está preparado para funcionar com o sistema operacional de seu servidor");
-     /* Montando o cabeçalho da mensagem */
+
+    
+    /* Montando o cabeçalho da mensagem */
      $headers = "MIME-Version: 1.1".$quebra_linha.
      "Content-type: text/html; charset=iso-8859-1".$quebra_linha .
      "From: ".$email_to.$quebra_linha.
      "Reply-To: ".$email_to.$quebra_linha;
-     // Note que o e-mail do remetente será usado no campo Reply-To (Responder Para)
-     echo'aqui fora';
-     /* Enviando a mensagem */
-     mail($email_to, $email_subject, $email_message, $headers);
-     $str_msg = 'Sua mensagem foi enviada com sucesso!';
-     echo $str_msg;
 
 
-?>
- 
- 
- 
-<!-- include your own success html here -->
- 
- 
- 
-Email enviado com sucesso.
- 
- 
- 
-<?php
+    if(!$envio = mail($email_to, $email_subject, $email_message, $headers ,"-r".$emailsender)){ // Se for Postfix
+        $headers .= "Return-Path: " . $emailsender . $quebra_linha; // Se "não for Postfix"
+        $envio = mail($email_to, $email_subject, $email_message, $headers );
+    }
+
+    if($envio)
+    {
+    $str_msg = 'Sua mensagem foi enviada com sucesso!';
+    }
+     else
+    {
+        $str_msg = 'Erro ao enviar mensagem!';
+    }
+     
+    echo json_encode($str_msg);
  
 }
  
