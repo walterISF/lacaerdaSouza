@@ -37,6 +37,28 @@ $(document).ready(function(){
 
 	// Initialize collapse button
 	$(".button-collapse").sideNav();
+
+
+	$("#btnContato").click(function(){
+
+
+		$.ajax({
+		  url: 'contact.php', // or /users/self/media/recent for Sandbox
+		  dataType: 'json',
+		  type: 'POST',
+		  data: {
+		  	name: $("#nome").val(), 
+		  	email: $("#email").val(),
+		  	message: $("#mensagem").val()
+		  },
+		  success: function(data){
+		  	console.log(data);
+		  }
+		  error: function(data){
+		    console.log(data); // send the error notifications to console
+		  }
+		  });
+	});
 		
 });
 
