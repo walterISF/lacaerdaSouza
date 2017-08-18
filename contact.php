@@ -59,7 +59,7 @@ if(isset($_POST['email'])) {
                 </tr>
                 <tr>
                     <td>
-                        Email: '.$email.'
+                        E-mail: '.$email.'
                     </td>
                 </tr>
                 <tr>
