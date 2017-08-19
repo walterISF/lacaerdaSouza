@@ -31,8 +31,6 @@ app.controller("myController", function($scope, $http, $location){
 
 });
 
-$(document).ready(function(){
-
 	$('.parallax').parallax();
 
 	// Initialize collapse button
@@ -40,16 +38,19 @@ $(document).ready(function(){
 
 	$("#btnContato").click(function(){
 
-		if( $("#nome").val() != "" && $("#icon_email").val() != "" && $("#mensagem").val() != "")
+		if( $("#nome").val() != "" && $("#email").val() != "" && $("#mensagem").val() != "")
 		{
+
+			console.log($("#nome").val());
+			console.log($("#email").val());
+			console.log($("#mensagem").val());
 
 			$.ajax({
 			  url: 'contact.php', // or /users/self/media/recent for Sandbox
-			  dataType: 'text',
 			  type: 'POST',
 			  data: {
 				name: $("#nome").val(),
-				email: $("#icon_email").val(),
+				email: $("#email").val(),
 				message: $("#mensagem").val()
 
 			  },
@@ -66,8 +67,7 @@ $(document).ready(function(){
 			alert("Preencha todos os campos");
 		}
 	});
-		
-});
+
 
 function carregarCaroucel(item)
 {

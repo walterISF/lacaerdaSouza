@@ -2,6 +2,10 @@
 
 if(isset($_POST['email'])) {
 
+    date_default_timezone_set('America/Sao_Paulo');
+    $data_envio = date('d/m/Y');
+    $hora_envio = date('H:i:s');
+
     $email_destino = "engenharia@lacerdasouza.com.br";
  
     $assunto = "Contato Site";
@@ -54,7 +58,7 @@ if(isset($_POST['email'])) {
               <table id="email" width="50%" border="1">
                 <tr>
                     <td>
-                        Nome: '.$name.'
+                        name: '.$name.'
                     </td>
                 </tr>
                 <tr>
@@ -94,9 +98,9 @@ if(isset($_POST['email'])) {
         
         /* Enviando a mensagem */
         //Verificando qual é o MTA que está instalado no servidor e efetuamos o ajuste colocando o paramentro -r caso seja Postfix
-        if(!mail($email_destino, '[Contato] - '.$nome, $message, $headers ,"-r".$emailsender)){ // Se for Postfix
+        if(!mail($email_destino, '[Contato] - '.$name, $message, $headers ,"-r".$emailsender)){ // Se for Postfix
             $headers .= "Return-Path: " . $emailsender . $quebra_linha; // Se "não for Postfix"
-        mail($email_destino, $assunto, $menssage, $headers);
+        mail($email_destino, $assunto, $message, $headers);
         //$str_msg = 'Sua mensagem foi enviada com sucesso!'; 
         //echo $str_msg;
         }

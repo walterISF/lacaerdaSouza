@@ -1,4 +1,4 @@
-$('#btnEnviar').click(function() {
+$('#btnContato').click(function() {
 
   var nome = $('input[name="name"]').val();
   var email = $('input[name="email"]').val();
