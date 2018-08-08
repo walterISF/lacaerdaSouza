@@ -1,4 +1,4 @@
-var app = angular.module("app", ["ngRoute"]);
+/*var app = angular.module("app", ["ngRoute"]);
 
 app.config(["$routeProvider", function($routeProvider){
 	$routeProvider.
@@ -29,6 +29,30 @@ app.controller("myController", function($scope, $http, $location){
 	   }
 	});
 
+});*/
+
+var $carousel = $('.carousel').flickity();
+
+	carregarCaroucel($carousel);
+
+
+	$(".scroll").click(function(event){        
+		event.preventDefault();
+		$('html,body').animate({scrollTop:$(this.hash).offset().top - 50}, 800);	
+});
+
+$(".side-nav li").click(function() {
+	$('.button-collapse').sideNav('hide');
+});
+
+$(window).scroll(function() {
+	 if($(window).scrollTop() + $(window).height() == $(document).height()) {
+			 $(".circulo").css("display","none");
+	 }
+	 else
+	 {
+			 $(".circulo").css("display","block");
+	 }
 });
 
 	$('.parallax').parallax();
@@ -54,11 +78,19 @@ app.controller("myController", function($scope, $http, $location){
 				message: $("#mensagem").val()
 
 			  },
-			  success: function(data){
-			  	console.log(data);
+				success: function(data)
+				{
+					$('#formContato input').val("");
+					$('#formContato textarea').val("");
+					$("#cdSucesso").css("display", "block");
+					setTimeout(function(){$("#cdSucesso").css("display", "none");},3000);
 			  },
-			  error: function(data){
-			    console.log(data); // send the error notifications to console
+				error: function(data)
+				{
+					$('#formContato input').val("");
+					$('#formContato textarea').val("");
+					$("#cdErro").css("display", "block");
+					setTimeout(function(){$("#cdErro").css("display", "none");},3000);
 			  }
 			});	
 		}
